@@ -34,15 +34,16 @@ public class SampleResource {
 	@GET
 	@Path("/")
 	public Response ask() {
-		final String ip = requestProvider.get().getRemoteAddr();
+		
+		house.print();
 		
 		Sink sink = injector.getInstance(Key.get(Sink.class, Names.named("Kitchen")));
 		Sink sink2 = injector.getInstance(Key.get(Sink.class, Names.named("Bathroom")));
 		
-		System.out.println(house);
 		System.out.println(sink);
 		System.out.println(sink2);
 		
+		final String ip = requestProvider.get().getRemoteAddr();
 		return Response.ok(ip).build();
 	}
 }
